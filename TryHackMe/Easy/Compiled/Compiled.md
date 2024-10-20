@@ -14,12 +14,12 @@
             <th>İlk Kan</th>
         </tr>
         <tr>
-            <td>Cap</td>
-            <td>Linux</td>
+            <td>Compiled</td>
+            <td>-</td>
             <td>Kolay</td>
-            <td>05/06/2021</td>
-            <td><a href="[https://app.hackthebox.com/users/52045](https://tryhackme.com/r/p/nerrorsec)">nerrorsec</a></td>
-            <td><a href="[https://app.hackthebox.com/users/139466](https://tryhackme.com/r/p/jimmymalik)">jimmymalik</a></td>
+            <td>05/10/2023</td>
+            <td><a href="https://tryhackme.com/r/p/nerrorsec">nerrorsec</a></td>
+            <td><a href="https://tryhackme.com/r/p/jimmymalik">jimmymalik</a></td>
         </tr>
     </thead>
 </table><br>
