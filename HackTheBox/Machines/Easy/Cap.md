@@ -1,6 +1,3 @@
-
-![70ea3357a2d090af11a0953ec8717e90](https://github.com/user-attachments/assets/ef31d783-3726-433e-8b2e-4b167488df65)
-
 ## HackTheBox - Cap
 
 Web uygulamasında bulunan IDOR zafiyetinden yola çıkarak elde ettiğimiz pcap dosyalarından FTP kullanıcı bilgilerini çıkaracak ve bu bilgileri kullanarak SSH servisine bağlanacağız. Daha sonra python'un setuid yeteneğinden yararlanarak root yetkisine erişeceğiz.
