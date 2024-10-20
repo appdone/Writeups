@@ -11,8 +11,8 @@
             <th>Zorluk Derecesi</th>
             <th>Yayın Tarihi</th>
             <th>Geliştirici</th>
-            <th>İlk Kan (user.txt)</th>
-            <th>İlk Kan (root.txt)</th>
+            <th>İlk Kan (user)</th>
+            <th>İlk Kan (root)</th>
         </tr>
         <tr>
             <td>Cap</td>
