@@ -3,7 +3,7 @@
 
 ## HackTheBox - Cap
 
-Web uygulamasında bulunan IDOR zafiyetinden yola çıkarak elde ettiğimiz pcap dosyalarından FTP kullanıcı bilgilerini çıkaracak ve bu bilgileri kullanarak SSH servisine bağlanacağız. Daha sonra python’un setuid yeteneği sayesinde root yetkisine erişeceğiz.
+Web uygulamasında bulunan IDOR zafiyetinden yola çıkarak elde ettiğimiz pcap dosyalarından FTP kullanıcı bilgilerini çıkaracak ve bu bilgileri kullanarak SSH servisine bağlanacağız. Daha sonra python'un setuid yeteneğinden yararlanarak root yetkisine erişeceğiz.
 
 Öncelikle angi servislerin ayakta olduğunu ve bu servislerin hangi portta çalıştığını öğrenmek için bir nmap taraması gerçekleştirelim.
 
