@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="images/0.jpg" alt="Compiled"></a>
+  <img width="300" height="400" src="images/0.png" alt="Compiled"></a>
   <br><br>TryHackMe - Compiled
 </h1>
 
