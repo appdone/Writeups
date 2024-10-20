@@ -24,9 +24,7 @@
             <td><a href="https://app.hackthebox.com/users/139466">szymex73</a></td>
         </tr>
     </thead>
-</table>
-
-
+</table><br>
 
 Web uygulamasında bulunan IDOR zafiyetinden yola çıkarak elde ettiğimiz pcap dosyalarından FTP kullanıcı bilgilerini çıkaracak ve bu bilgileri kullanarak SSH servisine bağlanacağız. Daha sonra python'un setuid yeteneğinden yararlanarak root yetkisine erişeceğiz.
 
