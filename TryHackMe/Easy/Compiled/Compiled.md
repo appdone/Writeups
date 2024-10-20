@@ -1,6 +1,6 @@
 <h1 align="center">
   <img width="400" height="400" src="images/0.png" alt="Compiled"></a>
-  <br><br>TryHackMe - Compiled
+  <br>TryHackMe - Compiled
 </h1>
 
 <table align="center">
