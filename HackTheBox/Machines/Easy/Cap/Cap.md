@@ -1,8 +1,36 @@
-## HackTheBox - Cap
+<h1 align="center">
+  <a href="https://www.hackthebox.eu/home/machines/profile/190"><img src="images/0.jpg" alt="Luke"></a>
+  <br><br>HackTheBox - Cap
+</h1>
+
+<table align="center">
+    <thead>
+        <tr>
+            <th>Makine Adı</th>
+            <th>İşletim Sistemi</th>
+            <th>Zorluk Derecesi</th>
+            <th>Yayın Tarihi</th>
+            <th>Geliştirici</th>
+            <th>İlk Kan (user.txt)</th>
+            <th>İlk Kan (root.txt)</th>
+        </tr>
+        <tr>
+            <td>Cap</td>
+            <td>Linux</td>
+            <td>Kolay</td>
+            <td>05/06/2021</td>
+            <td><a href="https://app.hackthebox.com/users/52045">InfoSecJack</a></td>
+            <td><a href="https://app.hackthebox.com/users/139466">szymex73</a></td>
+            <td><a href="https://app.hackthebox.com/users/139466">szymex73</a></td>
+        </tr>
+    </thead>
+</table>
+
+
 
 Web uygulamasında bulunan IDOR zafiyetinden yola çıkarak elde ettiğimiz pcap dosyalarından FTP kullanıcı bilgilerini çıkaracak ve bu bilgileri kullanarak SSH servisine bağlanacağız. Daha sonra python'un setuid yeteneğinden yararlanarak root yetkisine erişeceğiz.
 
-Öncelikle angi servislerin ayakta olduğunu ve bu servislerin hangi portta çalıştığını öğrenmek için bir nmap taraması gerçekleştirelim.
+Öncelikle hangi servislerin ayakta olduğunu ve bu servislerin hangi portta çalıştığını öğrenmek için bir nmap taraması gerçekleştirelim.
 
 ```markdown
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-08-17 08:31 EDT                                                                                                                           
@@ -23,21 +51,21 @@ PORT   STATE SERVICE VERSION
 
 Makinenin 21, 22 ve 80 portlarının açık olduğunu öğrendik. Script taraması yapmasınıda sağladığım için anonim giriş özelliğinin kapalı olduğunu biliyorum. HTTP servisi üzerindeki uygulamadan devam edelim.
 
-![1](https://github.com/user-attachments/assets/a85de148-5bbb-402c-a6c7-28fabdfacb14)
+![](images/1.jpg)
 
 Bir yönetim paneli bizi karşılıyor. Nathan adında bir kullanıcıya sahibiz ve çerezler belirtilmemiş. Uygulamada sadece üç adet sayfa bulunuyor. İşimize yaramayacak sayfalardan birinde “ifconfig” komutundan dönen sonuç diğerinde ise “netstat” komutundan dönen sonuçlar barınıyor Üçüncü sayfada ise bir takım bilgiler veren bir tablo ve indirme butonu bulunuyor.
 
-![2](https://github.com/user-attachments/assets/621f8e75-68a6-49d3-bed1-53f6b77604e1)
+![](images/2.jpg)
 
 Bu sayfada ilgimi çeken şey url adresinde ve butona tıkladığımızda yönlendiren sayfalar oldu. Örneğin url adresine baktığımızda /data/12 şeklinde bir dizin yapısı olduğunu görüyoruz. 12 yerine 0–14 arası sayıları girdiğimizde, numaralara ait sayfaları görüntülüyor. Aynı şekilde “Download” butonuda “/download/12” dizin yapısını kullanıyor. Kolay olması açısından download dizin yapısını kullanarak 0 da dahil olmak üzere 14 dosyayıda indirdim. Siz sırasıyla indirip inceleyebilirsizin. Ben daha sonra bu dosyaları otomatik inceleyen bir program deneyeceğim için hepsini indirme gereği duydum.
 
 0.pcap dosyasını wireshark yardımıyla inceledikten sonra bir FTP kullanıcı bilgisi buldum.
 
-![3](https://github.com/user-attachments/assets/89edc119-c3cf-463f-95d7-c09be206c810)
+![](images/3.jpg)
 
 Kullanıcı bilgilerini kullanarak FTP servisine giriş yaptığımda ise /home/nathan dizininde olduğumu öğrendim. Dizin geçişleri açık ama dosya yazma yetkimiz yok.
 
-![4](https://github.com/user-attachments/assets/76c6c7bb-7786-4ec9-b135-32ab7434f341)
+![](images/4.jpg)
 
 user.txt dosyasındaki bayrağı aldıktan sonra aynı kullanıcı bilgileri ile SSH servisine bağlanmak istedim, çünkü makinede de aynı kullanıcı barınıyor.
 
@@ -50,7 +78,7 @@ os.system(command)
 
 Buradaki kod satırında kullanıcı ID’sini “0” yaptığını ve daha sonra komut çalıştırdığını görüyoruz. ID değerini "0" yaptığı için bu komutu root yetkisinde çalıştırabiliyor. Bu bilgiden yola çıkarak python3 dosyasına setuid yeteneğinin verildiğini tahmin edebiliriz.
 
-![6](https://github.com/user-attachments/assets/f7ade6e8-fae0-41fe-a844-22c21aa638e3)
+![](images/5.jpg)
 
 Bizde kod satırındaki komutu biraz değiştirerek root haklarına sahip olmayı deneyelim.
 
@@ -60,4 +88,4 @@ python3 -c "import os; os.setuid(0); os.system('bash')"
 
 Yukarıdaki “python -c” komutu python programlama dilindeki kodların komut satırı üzerinde çalıştırılmasını sağlıyor. Tırnak içerisindeki python kodları ise os modülünü import ediyor, modülü kullanarak kullanıcı ID’sini 0 olarak ayarlıyor ve daha sonra ID bilgisi sıfır olan root kullanıcısı adına “bash” komutunu çalıştırıyor. Böylece root haklarına sahip bir shell elde ediyoruz.
 
-![10](https://github.com/user-attachments/assets/26f84122-c501-4f91-b34d-d067d9d53495)
+![](images/6.jpg)
